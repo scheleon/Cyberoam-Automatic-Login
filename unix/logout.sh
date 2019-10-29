@@ -2,7 +2,9 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-read username < username.txt
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+read username < $DIR/username.txt
 
 if [[ -z "$username" ]] 
 then
@@ -26,6 +28,6 @@ messageFilter=$(echo $message | grep "success")
 if [[ -n "$messageFilter" ]]; then
 	echo "${green}$message!!${reset}"
 else
-	echo "${red}$message!!${reset}"
+	echo "${red}$message not found!!${reset}"
 fi
 
