@@ -7,6 +7,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 read username < $DIR/username.txt
 read password < $DIR/password.txt
 
+password="$(cat $DIR/password.txt | base64 -d)"
+
 if [[ -z "$username" || -z "$password" ]] 
 then
 	echo "Username or Password empty!!";
