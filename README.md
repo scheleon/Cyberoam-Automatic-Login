@@ -2,7 +2,7 @@
 Automation of boring login task 
 
 ## Each time you connect your lan you are asked to enter your login credentials.
-Why do it when you can skip the boring stuff, login just by typing a single command. All you need to do is run the setup.sh.
+## Why do it when you can skip the boring stuff, login just by typing a single command. All you need to do is run the setup.sh.
 
 ```bash
 git clone https://github.com/scheleon/Cyberoam-Automatic-Login.git
