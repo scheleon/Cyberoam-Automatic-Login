@@ -2,8 +2,8 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-read username < /home/scheleon/bash/username.txt
-read password < /home/scheleon/bash/password.txt
+read username < username.txt
+read password < password.txt
 
 if [[ -z "$username" || -z "$password" ]] 
 then
