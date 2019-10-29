@@ -1,5 +1,8 @@
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
+
 read username < username.txt
-read password < password.txt
 
 if [[ -z "$username" ]] 
 then
@@ -7,7 +10,22 @@ then
 	exit 1;
 fi
 
-curl -k \
+response=$(curl -k \
 	--data-urlencode "mode=193"\
 	--data-urlencode "username=$username" -X POST \
-	--url "https://172.16.1.1:8090/logout.xml" 2>/dev/null
+	--url "https://172.16.1.1:8090/logout.xml" 2>/dev/null | \
+	sed -n 's:.*<message>\(.*\)</message>.*:\1:p')
+
+responseLength=${#response}
+messageLength=$((responseLength-3))
+
+message=$(echo "$response" | cut -c 10-$messageLength)
+
+messageFilter=$(echo $message | grep "success")
+
+if [[ -n "$messageFilter" ]]; then
+	echo "${green}$message!!${reset}"
+else
+	echo "${red}$message not found!!${reset}"
+fi
+
