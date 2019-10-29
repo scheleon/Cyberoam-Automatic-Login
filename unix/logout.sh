@@ -1,6 +1,9 @@
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
+BOLD='\033[1m'
+CYAN='\033[01;36m'
+YELLOW='\033[01;33m'
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -8,7 +11,7 @@ read username < $DIR/username.txt
 
 if [[ -z "$username" ]] 
 then
-	echo "Username empty!!";
+	echo -e "${red}${BOLD}Username empty!!${reset}";
 	exit 1;
 fi
 
@@ -26,8 +29,8 @@ message=$(echo "$response" | cut -c 10-$messageLength)
 messageFilter=$(echo $message | grep "success")
 
 if [[ -n "$messageFilter" ]]; then
-	echo "${green}$message!!${reset}"
+	echo -e "${YELLOW}${BOLD}$message!!${reset}"
 else
-	echo "${red}$message not found!!${reset}"
+	echo -e "${red}${BOLD}$message!!${reset}"
 fi
 

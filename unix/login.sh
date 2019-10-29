@@ -1,6 +1,8 @@
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
+BOLD='\033[1m'
+CYAN='\033[01;36m'
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -11,7 +13,7 @@ password="$(cat $DIR/password.txt | base64 -d)"
 
 if [[ -z "$username" || -z "$password" ]] 
 then
-	echo "Username or Password empty!!";
+	echo -e "${red}${BOLD}Username or Password empty!!${reset}";
 	exit 1;
 fi
 
@@ -30,7 +32,7 @@ message=$(echo "$response" | cut -c 10-$messageLength)
 messageFilter=$(echo $message | grep "success")
 
 if [[ -n "$messageFilter" ]]; then
-	echo "${green}$message!!${reset}"
+	echo -e "${CYAN}${BOLD}$message!!${reset}"
 else
-	echo "${red}$message!!${reset}"
+	echo -e "${red}${BOLD}$message!!${reset}"
 fi
