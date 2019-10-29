@@ -28,5 +28,5 @@ messageFilter=$(echo $message | grep "success")
 if [[ -n "$messageFilter" ]]; then
 	echo "${green}$message!!${reset}"
 else
-	echo "${red}$message not found!!${reset}"
+	echo "${red}$message!!${reset}"
 fi
