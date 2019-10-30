@@ -4,6 +4,8 @@ reset=`tput sgr0`
 BOLD='\033[1m'
 CYAN='\033[01;36m'
 
+SERVERIP=172.16.1.1
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 read username < $DIR/username.txt
@@ -15,6 +17,12 @@ if [[ -z "$username" || -z "$password" ]]
 then
 	echo -e "${red}${BOLD}Username or Password empty!!${reset}";
 	exit 1;
+fi
+
+ping -c 1 $SERVERIP > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+	echo -e "${red}${BOLD}Error, connecting to server $SERVERIP!!${reset}"
+	exit 1
 fi
 
 response=$(curl -k \
