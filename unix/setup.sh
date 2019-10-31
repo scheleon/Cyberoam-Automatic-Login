@@ -19,8 +19,11 @@ if [[ -z "$findSource" ]]; then
 	fi
 fi
 
-echo "alias login='$DIR/login.sh'" > $DIR/sourceFile
-echo "alias logout='$DIR/logout.sh'" >> $DIR/sourceFile
+read -p "Login-command alias : " loginAlias
+read -p "Logout-command alias : " logoutAlias
+
+echo "alias $loginAlias='$DIR/login.sh'" > $DIR/sourceFile
+echo "alias $logoutAlias='$DIR/logout.sh'" >> $DIR/sourceFile
 echo "alias resetlan='$DIR/resetlan.sh'" >> $DIR/sourceFile
 
 source /home/$user/.bashrc
