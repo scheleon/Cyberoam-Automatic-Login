@@ -1,0 +1,3 @@
+alias login='/home/scheleon/loginProgram/unix/login.sh'
+alias logout='/home/scheleon/loginProgram/unix/logout.sh'
+alias resetlan='/home/scheleon/loginProgram/unix/resetlan.sh'

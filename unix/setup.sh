@@ -6,7 +6,9 @@ reset=`tput sgr0`
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 user=$(id -un)
 
-findSource=$(cat /home/$user/.bashrc | grep $DIR/sourceFile)
+findSource=$(cat /home/$user/.bashrc | grep "$DIR/sourceFile")
+
+touch $DIR/sourceFile
 
 if [[ -z "$findSource" ]]; then
 	echo "$DIR/sourceFile" >> /home/$user/.bashrc
