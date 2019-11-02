@@ -17,7 +17,7 @@ then
 	exit 1;
 fi
 
-ping -c 1 $SERVERIP > /dev/null 2>&1
+ping -c 1 -w 1 $SERVERIP > /dev/null 2>&1
 if [ $? -ne 0 ]; then
         echo -e "${red}${BOLD}Error, connecting to server $SERVERIP!!${reset}"
         exit 1
